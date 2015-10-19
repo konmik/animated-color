@@ -17,7 +17,7 @@ Just copy/paste the class into your project:
 
 ``` java
     AnimatedColor color = new AnimatedColor(Color.RED, Color.WHITE);
-    int resultColor = color.with(0.5f);
+    int resultColor = color.with(0.5f); // [0..1] delta
 ```
 
 ### Notice
