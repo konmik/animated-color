@@ -10,7 +10,7 @@ The usual direct interpolation of HSV values results in a stranger behavior,
 in example you can see a blink of red color while you're interpolating from
 blue to white.
 
-# Usage
+### Usage
 
 Just copy/paste the class into your project:
 [AnimatedColor.java](https://github.com/konmik/animated-color/blob/master/animated-color/src/main/java/info/android15/color3d/AnimatedColor.java)
@@ -20,7 +20,7 @@ Just copy/paste the class into your project:
     int resultColor = color.with(0.5f);
 ```
 
-# A notice
+### Notice
 
 While this algorithm is OK for usage in a usual Android application,
 it is not as efficient as is should be for usage in games.
