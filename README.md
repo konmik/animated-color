@@ -19,3 +19,10 @@ Just copy/paste the class into your project:
     AnimatedColor color = new AnimatedColor(Color.RED, Color.WHITE);
     int resultColor = color.with(0.5f);
 ```
+
+# A notice
+
+While this algorithm is OK for usage in a usual Android application,
+it is not as efficient as is should be for usage in games.
+You may probably want to make use of temporary static variables
+instead of allocating small `float[]` buffers every time `with` is called.
