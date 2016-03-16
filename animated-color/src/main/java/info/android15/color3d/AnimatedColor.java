@@ -64,6 +64,8 @@ public class AnimatedColor {
         hsv[1] = (float) Math.sqrt(vector[0] * vector[0] + vector[1] * vector[1]);
         hsv[0] = hsv[1] < ERROR ? 0 :
             (float) (Math.atan2(vector[1] / hsv[1], vector[0] / hsv[1]) * 180 / Math.PI);
+        if (hsv[0] < 0)
+            hsv[0] += 360f;
         hsv[2] = vector[2];
         return hsv;
     }

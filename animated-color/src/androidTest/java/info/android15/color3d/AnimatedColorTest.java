@@ -3,15 +3,15 @@ package info.android15.color3d;
 import android.graphics.Color;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.annotation.Config;
 
+import static android.graphics.Color.alpha;
+import static android.graphics.Color.blue;
+import static android.graphics.Color.green;
+import static android.graphics.Color.red;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 21)
 public class AnimatedColorTest {
 
     @Test
@@ -41,10 +41,19 @@ public class AnimatedColorTest {
         assertEquals(Color.BLACK, new AnimatedColor(Color.BLACK, Color.BLACK).with(0));
         assertEquals(Color.RED, new AnimatedColor(Color.BLACK, Color.RED).with(1));
         assertEquals(0xFF808080, new AnimatedColor(Color.BLACK, Color.WHITE).with(0.5f));
-        assertEquals(0xFF804040, new AnimatedColor(0xFFFF0000, 0xFF000000).with(0.5f));
-        assertEquals(0xFFFF80FF, new AnimatedColor(0xFFFF0000, 0xFF0000FF).with(0.5f));
+        assertEquals(0xFF803F3F, new AnimatedColor(0xFFFF0000, 0xFF000000).with(0.5f));
+        assertEquals(0xFFFF7FFF, new AnimatedColor(0xFFFF0000, 0xFF0000FF).with(0.5f));
         assertEquals(0xFFFFFFFF, new AnimatedColor(0xFFFFFF00, 0xFF0000FF).with(0.5f));
-        assertEquals(0xFFFFFF80, new AnimatedColor(0xFFFFFF00, 0xFF0000FF).with(0.25f));
+        assertEquals(0xFFFFFF7F, new AnimatedColor(0xFFFFFF00, 0xFF0000FF).with(0.25f));
         assertEquals(0xFF8080FF, new AnimatedColor(0xFFFFFF00, 0xFF0000FF).with(0.75f));
+    }
+
+    @Test
+    public void testSpecialCases() throws Exception {
+        int c = new AnimatedColor(0xFF00FF00, 0xFF0000FF).with(0.90f);
+        assertTrue(alpha(c) == 0xFF);
+        assertTrue(red(c) < 0x30);
+        assertTrue(green(c) > 0x10 && green(c) < 0x80);
+        assertTrue(blue(c) > 0xE0);
     }
 }
